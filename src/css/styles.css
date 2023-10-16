@@ -1,6 +1,13 @@
 @font-face {
     font-family: 'MuseoSansCyrl';
-    src: url('fonts/MuseoSansCyrl100.otf') format('otf')
+    font-weight: 300;
+    src: url('../fonts/MuseoSansCyrl300.woff2') format('woff2')
+}
+
+@font-face {
+    font-family: 'MuseoSansCyrl';
+    font-weight: 500;
+    src: url('../fonts/MuseoSansCyrl500.woff2') format('woff2')
 }
 
 body {
@@ -49,6 +56,13 @@ input:focus {
 
 .text {
     font-family: MuseoSansCyrl;
+}
+
+.your_page__information_text {
+    font-weight: 400;
+    font-size: 9px;
+
+    color: #5D5B66;
 }
 
 .die_text{
@@ -213,6 +227,10 @@ input:focus {
     font-size: 14px;
 }
 
+.upload {
+    text-align: center;
+}
+
 .footer_contacts_container {
     display: flex;
     justify-content: space-between;
@@ -226,7 +244,8 @@ input:focus {
 .footer_icons {
     width: 10%;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .a__info {
@@ -417,9 +436,15 @@ input:focus {
 .die_text_container {
     display: flex;
     flex-direction: row;
-    gap: 150px;
+    gap: 70px;
     padding-top: 17px;
     justify-content: space-around;
+}
+
+.text_die {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
 }
 
 .your_page__image_container {
@@ -465,8 +490,151 @@ input:focus {
 
 .your_page__information__impotrant_information_aboutme {
     width: 386px;
-    height: 1px;
+    height: 11px;
     display: flex;
     flex-direction: row;
     gap: 4px;
+    align-items: center;
+}
+
+.your_page__information__impotrant_information_aboutme_text {
+    font-size: 9px;
+    font-weight: 400;
+
+    color: #040013;
+}
+
+.your_page__information__impotrant_information_aboutme_circle {
+    width: 3px;
+    height: 3px;
+
+    opacity: 30%;
+    
+    border-radius: 50%;
+    background: #7953C3;
+
+    text-align: end;
+}
+
+.your_page__information__impotrant_information_aboutme_textplace {
+    width: 120px;
+    height: 11px;
+
+    border-radius: 4px;
+    background: #EEEEF1;
+}
+
+.your_page__information_textplace {
+    width: 121px;
+    height: 17px;
+
+    border-radius: 4px;
+    background: #EEEEF1;
+}
+
+.your_page__no_text {
+    width: 346px;
+    height: 89px;
+
+    border-radius: 8px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    background-color: #F4F4F6;
+
+    padding: 12px 20px;
+}
+
+.your_page__no_text__first_part {
+    height: 51px;
+    width: 354px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.your_page__no_text__first_part__none {
+    height: 11px;
+    width: 86px;
+
+    border-radius: 4px;
+    background-color: #F4F4F6;
+}
+
+.your_page__no_text__first_part__textplace_container {
+    width: 288px;
+    height: 36px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.your_page__no_text__first_part__first_textplace {
+    height: 20px;
+    width: 178px;
+
+    border-radius: 6px;
+
+    background-color: #EEEEF1;
+}
+
+.your_page__no_text__first_part__second_textplace {
+    height: 14px;
+    width: 288px;
+
+    border-radius: 4px;
+
+    background-color: #EEEEF1;
+}
+
+.your_page__no_text__second_part {
+    width: 354px;
+    height: 30px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.your_page__no_text__second_part__line {
+    width: 344px;
+    border: 1px solid;
+
+    opacity: 50%;
+
+    color: #CCCCCC;
+}
+
+.your_page__no_text__second_part__textplace_container {
+    width: 334px;
+    height: 22px;
+
+    border-radius: 8px;
+    padding: 3px 4px 3px 0;
+
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.your_page__no_text__second_part__first_textplace {
+    width: 138px;
+    height: 16px;
+
+    border-radius: 4px;
+
+    background-color: #EEEEF1;
+}
+
+.your_page__no_text__second_part__second_textplace {
+    width: 182px;
+    height: 16px;
+
+    border-radius: 4px;
+
+    background-color: #EEEEF1;
 }
