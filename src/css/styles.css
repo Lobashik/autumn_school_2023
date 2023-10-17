@@ -34,6 +34,10 @@ input:focus {
     outline: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 .bold_text {
     font-family: MuseoSansCyrl;
     font-weight: 600;
@@ -56,6 +60,13 @@ input:focus {
 
 .text {
     font-family: MuseoSansCyrl;
+}
+
+.grade_text {
+    font-weight: 400;
+    font-size: 14px;
+
+    color: #5D5B66;
 }
 
 .your_page__information_text {
@@ -319,6 +330,10 @@ input:focus {
     width: 10%;
 }
 
+.page2 {
+    width: 30%;
+}
+
 .continue {
     display: flex;
     flex-direction: row-reverse;
@@ -530,6 +545,10 @@ input:focus {
 
     border-radius: 4px;
     background: #EEEEF1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .your_page__no_text {
@@ -637,4 +656,80 @@ input:focus {
     border-radius: 4px;
 
     background-color: #EEEEF1;
+}
+
+.page2_slesh {
+    width: 120px;
+}
+
+.page2_container {
+    width: 434px;
+}
+
+.who_are_you {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.grade {
+    height: 56px;
+    width: 336px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    background-color: #F4F4F6;
+    border-radius: 8px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.grade_container {
+    width: 366px;
+    height: 120px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grade_education {
+    height: 35px;
+    width: 32px;
+
+    background-color: #F4F4F6;
+    border-radius: 8px;
+
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.grade_education:active {
+    background-color: #7953c3;
+    color: #fff;
+}
+
+.select_level_education_container {
+    width: 366px;
+    height: 80px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.select_level_education {
+    height: 56px;
+
+    border-radius: 8px;
+    border-color: #F4F4F6;
+    background-color: #F4F4F6;
+}
+
+.page2_text {
+    width: 366px;
 }

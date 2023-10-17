@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/styles.css">
-        <title>Создание профиля / 1 О себе</title>
+        <title>Создание профиля / 1 Образование</title>
     </head>
     <body>
         <main class="main_class">
@@ -22,62 +22,97 @@
                         <p class="button_text on_main">На главную</p>
                     </button>
                     <div class="namepage_name">
-                        <div class="namepage_name__text_container">
+                        <div class="namepage_name__text_container page2_container">
                             <div class="namepage_name__text__title">
                                 <h3 class="namepage_name__text__title_h">Создание профиля</h3>
                             </div>
-                            <div class="namepage_name__text__light_text_container">
+                            <div class="namepage_name__text__light_text_container page2_slesh">
                                 <p class="light_text_namepage">/</p>
-                                <p class="light_text_namepage">О себе</p>
+                                <p class="light_text_namepage">Образование</p>
                             </div>
                         </div>
                         <div class="namepage_name__progressbar_conteiner">
-                            <div class="namepage_name__progressbar page1"></div>
+                            <div class="namepage_name__progressbar page2"></div>
                         </div>
                     </div>
                 </section>
                 <section class="mainbody">
                     <form id="registration_form">
                         <div class="left_colomn">
-                            <div class="photo_ava_container">
-                                <label for="input_file" class="input_file">
-                                    <p class="text photo_ava">Аватар профиля</p>
-                                    <button class="button_continue upload_ava">
-                                        <p class="button_text upload">Загрузить</p>
-                                    </button>
-                                    <p class="light_text copyright upload">Загрузите до 15 фотографий, весом не более 10мб</p>
-                                </label>
-                                <input type="file" id="input_file" accept=".png,.jpg,.jpeg" style="display: none;">
-                            </div>
-                            <div class="name">
-                                <label for="name"><p class="text name_text">Имя и фамилия</p></label>
-                                <input type="text" id="name" value="Дмитрий Лобанев" class="input_text">
-                                <div class="sex">
-                                    <div class="man">
-                                        <label for="man">
-                                        <input type="radio" name="radio" id="man" class="radio-label">
-                                        <p class="text sex_text">Парень</p>
-                                        </label>
-                                    </div>
-                                    <div class="woman">
-                                        <input type="radio" name="radio" id="woman" class="radio-label">
-                                        <label for="woman"><p class="text sex_text">Девушка</p></label>
-                                    </div>
+                            <div class="who_are_you">
+                                <div class="student">
+                                    <label for="student">
+                                    <input type="radio" name="radio" id="student" class="radio-label">
+                                    <p class="text sex_text">Студент / выпускник</p>
+                                    </label>
+                                </div>
+                                <div class="employee">
+                                    <input type="radio" name="radio" id="employee" class="radio-label">
+                                    <label for="woman"><p class="text sex_text">Сотрудник</p></label>
                                 </div>
                             </div>
-                            <div>
-                                <input type="date" class="data" placeholder="Дата рождения">
+                            <div class="grade_container">
+                                <p class="text grade_text">Курс</p>
+                                <div class="grade">
+                                    <label class="grade_education" for="grage">
+                                        <input type="radio", name="grade", value="1", style="display: none;">
+                                        1
+                                    </label>
+                                    <label class="grade_education" for="grage">
+                                        <input type="radio", name="grade", value="2", style="display: none;">
+                                        2
+                                    </label>
+                                    <label class="grade_education" for="grage">
+                                        <input type="radio", name="grade", value="3", style="display: none;">
+                                        3
+                                    </label>
+                                    <label class="grade_education" for="grage">
+                                        <input type="radio", name="grade", value="4", style="display: none;">
+                                        4
+                                    </label>
+                                    <label class="grade_education" for="grage">
+                                        <input type="radio", name="grade", value="5", style="display: none;">
+                                        5
+                                    </label>
+                                    <label class="grade_education" for="grage">
+                                        <input type="radio", name="grade", value="6", style="display: none;">
+                                        6
+                                    </label>
+                                </div>
+                                <div class="grade_education_end">
+                                    <input type="checkbox" id="end" name="grade">
+                                    <label for="end" class="text sex_text">Уже окончил</label>
+                                </div>
+                            </div>
+                            <div class="select_level_education_container">
+                                <label for="level_education">Ступень образования</label>
+                                <select class="select_level_education" name="level_education" id="level_education">
+                                    <option value="" disabled selected>Ступень образования</option>
+                                    <option value="bachelor">Бакалавриат</option>
+                                    <option value="magistracy">Магистратура</option>
+                                    <option value="postgraduate">Аспирантура</option>
+                                </select>
+                            </div>
+                            <div class="select_level_education_container">
+                                <label for="level_education">Факультет</label>
+                                <select class="select_level_education" name="level_education" id="level_education">
+                                    <option value="" disabled selected>Факультет</option>
+                                    <option value="bachelor">МИЭМ</option>
+                                    <option value="magistracy">ФКН</option>
+                                    <option value="postgraduate">ВШБ</option>
+                                </select>
+                            </div>
+                            <div class="select_level_education_container">
+                                <label for="level_education">Образовательная программа</label>
+                                <select class="select_level_education" name="level_education" id="level_education">
+                                    <option value="" disabled selected>Образовательная программа</option>
+                                    <option value="bachelor">ИВТ</option>
+                                    <option value="magistracy">ИБ</option>
+                                    <option value="postgraduate">ИТСС</option>
+                                </select>
                             </div>
                             <div>
-                                <input type="tel" placeholder="Номер телефона" class="input_text">
-                            </div>
-                            <div>
-                                <input type="telegram" placeholder="Ник в телеграме" class="input_text">
-                            </div>
-                            <div class="name">
-                                <label for="aboutme"><p class="text name_text">О себе</p></label>
-                                <textarea id="aboutme" class="input_text textarea"></textarea>
-                                <p class="light_text aboutme">Например: Редко готовлю, но люблю ботать на кухне по ночам. Хочу завести собаку. Очень люблю читать, играть в хорроры и смотреть аниме. Открыт к общению и взаимопомощи :)</p>
+                                <input type="telegram" placeholder="Работа" class="input_text page2_text">
                             </div>
                         </div>
                     </form>
@@ -86,7 +121,9 @@
                             <p class="text die_text" style="padding-left: 8px;">Так будет выглядеть твоя будущая страница</p>
                             <div class="die your_page">
                                 <div class="your_page__image_container">
-                                    <div class="your_page__image"></div>
+                                    <div class="your_page__image">
+                                        <img src="img/ava.svg" alt="avatar" width="140px" height="140px" style="border-radius: 8px;">
+                                    </div>
                                     <button class="button your_page__image_button">
                                         <p class="bold_text image_button">Показать контакты</p>
                                     </button>
@@ -102,10 +139,12 @@
                                                 <div class="your_page__information__impotrant_information_aboutme_circle"></div>
                                                 <p class="text your_page__information__impotrant_information_aboutme_text">18 лет</p>
                                                 <div class="your_page__information__impotrant_information_aboutme_circle"></div>
-                                                <div class="your_page__information__impotrant_information_aboutme_textplace"></div>
+                                                <p class="your_page__information__impotrant_information_aboutme_text">Первый курс бакалавриат МИЭМ ИВТ</p>
                                             </div>
                                         </div>
-                                        <div class="your_page__information_textplace"></div>
+                                        <div class="your_page__information_textplace">
+                                            <p class="your_page__information__impotrant_information_aboutme_text">Отсутствует</p>
+                                        </div>
                                         <p class="text your_page__information_text">Мне очень нравится устраивать вечеринки, дебоширить и мазать с...</p>
                                     </div>
                                     <div class="your_page__no_text">
@@ -130,10 +169,10 @@
                         <div class="die">
                             <div class="die_text_container">
                                 <div class="text_die">
-                                    <p class="bold_text die_bold_text">Мы совсем ничего про тебя не знаем</p>
+                                    <p class="bold_text die_bold_text">Расскажи где ты учишься</p>
                                     <div>
-                                        <p class="text die_text">Расскажи о себе.</p>
-                                        <p class="text die_text">Люди пишут тем, кому доверяют. Тем более при поиске соседа</p>
+                                        <br>
+                                        <p class="text die_text">Часто студенты ищут соседей по схожим интересам</p>
                                     </div>
                                 </div>
                                 <img src="img/smile.svg" alt="smile">
@@ -142,11 +181,11 @@
                     </div>
                 </section>
                 <section class="continue">
-                    <a href="index2.html">
-                        <button class="button_continue">
-                            <p class="button_continue_text">Продолжить</p>
-                        </button>
-                    </a>
+                    <button class="button_continue">
+                        <p class="button_continue_text">
+                            Продолжить
+                        </p>
+                    </button>
                 </section>
             </div>
             <footer>
@@ -160,9 +199,9 @@
                         </div>
                         <div class="footer_contacts_container">
                             <div class="footer_contacts">
-                                <a href="#" class="a__info">О сервисе</a>
-                                <a href="#" class="a__info">Контакты</a>
-                                <a href="#" class="a__info">Политика конфидициальности</a>
+                                <p class="a__info">О сервисе</p>
+                                <p class="a__info">Контакты</p>
+                                <p class="a__info">Политика конфидициальности</p>
                             </div>
                             <div class="footer_icons">
                                 <a href="#">
