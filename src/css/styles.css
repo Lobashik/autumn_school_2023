@@ -10,7 +10,21 @@
     src: url('../fonts/MuseoSansCyrl500.woff2') format('woff2')
 }
 
+#page2 {
+    display: None;
+}
+
+#flex_page2 {
+    display: None;
+}
+
+#die_student {
+    display: None;
+}
+
 body {
+    font-family: 'MuseoSansCyrl';
+
     margin: 0;
     padding: 0;
 }
@@ -18,7 +32,6 @@ body {
 footer {
     border-top: 1px solid #EBEBEB;
     padding-top: 120px;
-    height: 528px;
 }
 
 h2 {
@@ -37,6 +50,19 @@ input:focus {
 a {
     text-decoration: none;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
 
 .bold_text {
     font-family: MuseoSansCyrl;
@@ -70,10 +96,18 @@ a {
 }
 
 .your_page__information_text {
+    height: 11px;
+    max-height: 11px;
+
+    border-radius: 4px;
+    background: #EEEEF1;    
     font-weight: 400;
     font-size: 9px;
+    padding: 0px 4px;
 
     color: #5D5B66;
+
+    overflow: hidden;
 }
 
 .die_text{
@@ -85,6 +119,10 @@ a {
     font-size: 14px;
     font-weight: 400;
     color: #5D5B66;
+}
+
+.err {
+    color: #ff0000;
 }
 
 .sex_text {
@@ -346,10 +384,37 @@ a {
     border-radius: 16px;
 }
 
+.new_photo_ava_container {
+    height: 200px;
+    width: 200px;
+    border: None;
+    position: relative;
+}
+
+.new_photo_ava_container__cross_container {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 24px;
+    cursor: pointer;
+    display: flex;
+    height: 18px;
+    justify-content: center;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 18px;
+    z-index: 9;
+}
+
+.new_photo_ava_container__cross {
+    height: 10px;
+    width: 10px;
+}
+
 .mainbody {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    justify-content: space-between;
 }
 
 .left_colomn {
@@ -365,11 +430,10 @@ a {
     flex-direction: column;
     gap: 16px;
     align-items: center;
+    margin-bottom: 5px;
 }
 
 .name {
-    width: 366px;
-
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -390,6 +454,11 @@ a {
     border: #F4F4F6;
 
     padding: 16px 12px;
+}
+
+.new_input_text {
+    background: rgba(255, 0, 0, 0.05);
+    border: 1px solid #ff0000;
 }
 
 .textarea {
@@ -479,6 +548,10 @@ a {
     border-radius: 16px;
 }
 
+.new_your_page__image {
+    border: None;
+}
+
 .your_page__information_container {
     height: 218px;
 
@@ -537,6 +610,11 @@ a {
 
     border-radius: 4px;
     background: #EEEEF1;
+
+    font-size: 9px;
+    font-weight: 400;
+
+    color: #040013;
 }
 
 .your_page__information_textplace {
@@ -545,10 +623,17 @@ a {
 
     border-radius: 4px;
     background: #EEEEF1;
+    font-weight: 400;
+    font-size: 9px;
+    padding: 0px 4px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    color: #5D5B66;
+
+    overflow: hidden;
 }
 
 .your_page__no_text {
@@ -708,13 +793,13 @@ a {
     justify-content: center;
 }
 
-.grade_education:active {
+.grade_education.selected {
     background-color: #7953c3;
     color: #fff;
 }
 
 .select_level_education_container {
-    width: 366px;
+    width: 346px;
     height: 80px;
 
     display: flex;
@@ -730,6 +815,22 @@ a {
     background-color: #F4F4F6;
 }
 
-.page2_text {
-    width: 366px;
+.work {
+    width: 346px;
+}
+
+#student_colomn {
+    display: None;
+}
+
+#employee_colomn {
+    display: None;
+}
+
+.year {
+    width: 173px;
+}
+
+#die_employee {
+    display: None;
 }

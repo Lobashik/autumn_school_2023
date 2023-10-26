@@ -4,10 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <title>Создание профиля / 1 О себе</title>
     </head>
     <body>
-        <main class="main_class">
+        <main>
             <header class="header">
                 <div class="header_container">
                     <img src="icons/homeet_icon.svg" alt="HOMEET HSE">
@@ -21,7 +23,7 @@
                     <button class="button on_main">
                         <p class="button_text on_main">На главную</p>
                     </button>
-                    <div class="namepage_name">
+                    <div class="namepage_name" id="page1">
                         <div class="namepage_name__text_container">
                             <div class="namepage_name__text__title">
                                 <h3 class="namepage_name__text__title_h">Создание профиля</h3>
@@ -35,11 +37,25 @@
                             <div class="namepage_name__progressbar page1"></div>
                         </div>
                     </div>
+                    <div class="namepage_name" id="page2">
+                        <div class="namepage_name__text_container page2_container">
+                            <div class="namepage_name__text__title">
+                                <h3 class="namepage_name__text__title_h">Создание профиля</h3>
+                            </div>
+                            <div class="namepage_name__text__light_text_container page2_slesh">
+                                <p class="light_text_namepage">/</p>
+                                <p class="light_text_namepage">Образование</p>
+                            </div>
+                        </div>
+                        <div class="namepage_name__progressbar_conteiner">
+                            <div class="namepage_name__progressbar page2"></div>
+                        </div>
+                    </div>
                 </section>
                 <section class="mainbody">
                     <form id="registration_form">
-                        <div class="left_colomn">
-                            <div class="photo_ava_container">
+                        <div class="left_colomn" id="flex_page1">
+                            <div class="photo_ava_container" id="photo_ava_container">
                                 <label for="input_file" class="input_file">
                                     <p class="text photo_ava">Аватар профиля</p>
                                     <button class="button_continue upload_ava">
@@ -66,18 +82,110 @@
                                 </div>
                             </div>
                             <div>
-                                <input type="date" class="data" placeholder="Дата рождения">
+                                <input type="date" class="data" placeholder="Дата рождения" id="data">
                             </div>
                             <div>
-                                <input type="tel" placeholder="Номер телефона" class="input_text">
+                                <label for="input_number" style="display: None;" id="input_number_label"><p class="text name_text err">Номер телефона | неверный формат</p></label>
+                                <input type="number" placeholder="Номер телефона" class="input_text" id="input_number">
                             </div>
                             <div>
-                                <input type="telegram" placeholder="Ник в телеграме" class="input_text">
+                                <label for="input_tg" style="display: None" id="input_tg_label">
+                                    <p class="text name_text err" style="display: None;" id="dog">Ник в телеграме должен начинаться с "@"</p>
+                                    <p class="text name_text err" style="display: None;" id="length">Ник в телеграме содержит минимум 5 символов</p>
+                                </label>
+                                <input type="text" placeholder="Ник в телеграме" class="input_text" id="input_tg">
                             </div>
                             <div class="name">
                                 <label for="aboutme"><p class="text name_text">О себе</p></label>
                                 <textarea id="aboutme" class="input_text textarea"></textarea>
                                 <p class="light_text aboutme">Например: Редко готовлю, но люблю ботать на кухне по ночам. Хочу завести собаку. Очень люблю читать, играть в хорроры и смотреть аниме. Открыт к общению и взаимопомощи :)</p>
+                            </div>
+                        </div>
+                        <div class="left_colomn" id="flex_page2">
+                            <div class="who_are_you">
+                                <div class="student">
+                                    <label for="student">
+                                    <input type="radio" name="radio" id="student" class="radio-label">
+                                    <p class="text sex_text">Студент / выпускник</p>
+                                    </label>
+                                </div>
+                                <div class="employee">
+                                    <input type="radio" name="radio" id="employee" class="radio-label">
+                                    <label for="woman"><p class="text sex_text">Сотрудник</p></label>
+                                </div>
+                            </div>
+                            <div class="left_colomn" id="student_colomn">
+                                <div class="grade_container">
+                                    <p class="text grade_text">Курс</p>
+                                    <div class="grade">
+                                        <label class="grade_education" for="grage">
+                                            <input type="radio" name="grade" value="1" style="display: none;" id="1">
+                                            1
+                                        </label>
+                                        <label class="grade_education" for="grage">
+                                            <input type="radio" name="grade" value="2" style="display: none;" id="2">
+                                            2
+                                        </label>
+                                        <label class="grade_education" for="grage">
+                                            <input type="radio" name="grade" value="3" style="display: none;" id="3">
+                                            3
+                                        </label>
+                                        <label class="grade_education" for="grage">
+                                            <input type="radio" name="grade" value="4" style="display: none;" id="4">
+                                            4
+                                        </label>
+                                        <label class="grade_education" for="grage">
+                                            <input type="radio" name="grade" value="5" style="display: none;" id="5">
+                                            5
+                                        </label>
+                                        <label class="grade_education" for="grage">
+                                            <input type="radio" name="grade" value="6" style="display: none;" id="6">
+                                            6
+                                        </label>
+                                    </div>
+                                    <div class="grade_education_end">
+                                        <input type="checkbox" id="end" name="grade">
+                                        <label for="end" class="text sex_text">Уже окончил</label>
+                                    </div>
+                                </div>
+                                <div class="select_level_education_container">
+                                    <label for="level_education">Ступень образования</label>
+                                    <select class="select_level_education" name="level_education" id="level_education">
+                                        <option value="" disabled selected>Ступень образования</option>
+                                        <option value="bachelor">Бакалавриат</option>
+                                        <option value="magistracy">Магистратура</option>
+                                        <option value="postgraduate">Аспирантура</option>
+                                    </select>
+                                </div>
+                                <div class="select_level_education_container">
+                                    <label for="level_education">Факультет</label>
+                                    <select class="select_level_education" name="level_education" id="level_education">
+                                        <option value="" disabled selected>Факультет</option>
+                                        <option value="bachelor">МИЭМ</option>
+                                        <option value="magistracy">ФКН</option>
+                                        <option value="postgraduate">ВШБ</option>
+                                    </select>
+                                </div>
+                                <div class="select_level_education_container">
+                                    <label for="level_education">Образовательная программа</label>
+                                    <select class="select_level_education" name="level_education" id="level_education">
+                                        <option value="" disabled selected>Образовательная программа</option>
+                                        <option value="bachelor">ИВТ</option>
+                                        <option value="magistracy">ИБ</option>
+                                        <option value="postgraduate">ИТСС</option>
+                                    </select>
+                                </div>
+                                <div class="work">
+                                    <input type="text" placeholder="Работа" class="input_text" id="work_student">
+                                </div>
+                            </div>
+                            <div class="left_colomn" id="employee_colomn">
+                                <div class="work">
+                                    <input type="text" placeholder="Кем вы работаете" class="input_text" id="work">
+                                </div>
+                                <div class="year">
+                                    <input type="number" placeholder="2023" class="input_text">
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -86,7 +194,7 @@
                             <p class="text die_text" style="padding-left: 8px;">Так будет выглядеть твоя будущая страница</p>
                             <div class="die your_page">
                                 <div class="your_page__image_container">
-                                    <div class="your_page__image"></div>
+                                    <div class="your_page__image" id="image_container"></div>
                                     <button class="button your_page__image_button">
                                         <p class="bold_text image_button">Показать контакты</p>
                                     </button>
@@ -102,11 +210,11 @@
                                                 <div class="your_page__information__impotrant_information_aboutme_circle"></div>
                                                 <p class="text your_page__information__impotrant_information_aboutme_text">18 лет</p>
                                                 <div class="your_page__information__impotrant_information_aboutme_circle"></div>
-                                                <div class="your_page__information__impotrant_information_aboutme_textplace"></div>
+                                                <div class="text your_page__information__impotrant_information_aboutme_textplace" id="grade_text"></div>
                                             </div>
                                         </div>
-                                        <div class="your_page__information_textplace"></div>
-                                        <p class="text your_page__information_text">Мне очень нравится устраивать вечеринки, дебоширить и мазать с...</p>
+                                        <div class="text your_page__information_textplace" id="work_display_text"></div>
+                                        <p class="text your_page__information_text" id="display_text"></p>
                                     </div>
                                     <div class="your_page__no_text">
                                         <div class="your_page__no_text__first_part">
@@ -127,7 +235,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="die">
+                        <div class="die" id="die_page1">
                             <div class="die_text_container">
                                 <div class="text_die">
                                     <p class="bold_text die_bold_text">Мы совсем ничего про тебя не знаем</p>
@@ -139,14 +247,36 @@
                                 <img src="img/smile.svg" alt="smile">
                             </div>
                         </div>
+                        <div class="die" id="die_student">
+                            <div class="die_text_container">
+                                <div class="text_die">
+                                    <p class="bold_text die_bold_text">Расскажи где ты учишься</p>
+                                    <div>
+                                        <br>
+                                        <p class="text die_text">Часто студенты ищут соседей по схожим интересам</p>
+                                    </div>
+                                </div>
+                                <img src="img/smile.svg" alt="smile">
+                            </div>
+                        </div>
+                        <div class="die" id="die_employee">
+                            <div class="die_text_container">
+                                <div class="text_die">
+                                    <p class="bold_text die_bold_text">Расскажи кем ты работаешь</p>
+                                    <div>
+                                        <br>
+                                        <p class="text die_text">У студентов будет больше доверия к тем, кого они знают</p>
+                                    </div>
+                                </div>
+                                <img src="img/smile.svg" alt="smile">
+                            </div>
+                        </div>
                     </div>
                 </section>
-                <section class="continue">
-                    <a href="index2.html">
-                        <button class="button_continue">
-                            <p class="button_continue_text">Продолжить</p>
-                        </button>
-                    </a>
+                <section class="continue">  
+                    <button class="button_continue" id="continue">
+                        <p class="button_continue_text">Продолжить</p>
+                    </button>
                 </section>
             </div>
             <footer>
@@ -187,5 +317,7 @@
                 </div>
             </footer>
         </main>
+        <script src="js/script.js">
+        </script>
     </body>
 </html>
