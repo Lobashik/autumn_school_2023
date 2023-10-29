@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <title>Создание профиля / 1 О себе</title>
+        <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src=" https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <title>Создание профиля</title>
     </head>
     <body>
         <main>
@@ -71,12 +72,12 @@
                                 <div class="sex">
                                     <div class="man">
                                         <label for="man">
-                                        <input type="radio" name="radio" id="man" class="radio-label">
+                                        <input type="radio" name="radio" id="man" class="radio-label" value="Парень">
                                         <p class="text sex_text">Парень</p>
                                         </label>
                                     </div>
                                     <div class="woman">
-                                        <input type="radio" name="radio" id="woman" class="radio-label">
+                                        <input type="radio" name="radio" id="woman" class="radio-label" value="Девушка">
                                         <label for="woman"><p class="text sex_text">Девушка</p></label>
                                     </div>
                                 </div>
@@ -105,12 +106,12 @@
                             <div class="who_are_you">
                                 <div class="student">
                                     <label for="student">
-                                    <input type="radio" name="radio" id="student" class="radio-label">
+                                    <input type="radio" name="radio_type" id="student" class="radio-label">
                                     <p class="text sex_text">Студент / выпускник</p>
                                     </label>
                                 </div>
                                 <div class="employee">
-                                    <input type="radio" name="radio" id="employee" class="radio-label">
+                                    <input type="radio" name="radio_type" id="employee" class="radio-label">
                                     <label for="woman"><p class="text sex_text">Сотрудник</p></label>
                                 </div>
                             </div>
@@ -158,8 +159,8 @@
                                     </select>
                                 </div>
                                 <div class="select_level_education_container">
-                                    <label for="level_education">Факультет</label>
-                                    <select class="select_level_education" name="level_education" id="level_education">
+                                    <label for="faculty_education">Факультет</label>
+                                    <select class="select_level_education" name="level_education" id="faculty_education">
                                         <option value="" disabled selected>Факультет</option>
                                         <option value="bachelor">МИЭМ</option>
                                         <option value="magistracy">ФКН</option>
@@ -167,8 +168,8 @@
                                     </select>
                                 </div>
                                 <div class="select_level_education_container">
-                                    <label for="level_education">Образовательная программа</label>
-                                    <select class="select_level_education" name="level_education" id="level_education">
+                                    <label for="op_education">Образовательная программа</label>
+                                    <select class="select_level_education" name="level_education" id="op_education">
                                         <option value="" disabled selected>Образовательная программа</option>
                                         <option value="bachelor">ИВТ</option>
                                         <option value="magistracy">ИБ</option>
@@ -206,11 +207,17 @@
                                                 <p class="bold_text important_information_name_text">Дмитрий Лобанев</p>
                                             </div>
                                             <div class="your_page__information__impotrant_information_aboutme">
-                                                <p class="text your_page__information__impotrant_information_aboutme_text">Парень</p>
+                                                <p class="text your_page__information__impotrant_information_aboutme_text" id="sex">Парень</p>
                                                 <div class="your_page__information__impotrant_information_aboutme_circle"></div>
                                                 <p class="text your_page__information__impotrant_information_aboutme_text">18 лет</p>
                                                 <div class="your_page__information__impotrant_information_aboutme_circle"></div>
                                                 <div class="text your_page__information__impotrant_information_aboutme_textplace" id="grade_text"></div>
+                                                <div class="your_page__information__impotrant_information_aboutme_circle" id="grade_text_1__circle"></div>
+                                                <div class="text your_page__information__impotrant_information_aboutme_textplace" id="grade_text_1"></div>
+                                                <div class="your_page__information__impotrant_information_aboutme_circle" id="grade_text_2__circle"></div>
+                                                <div class="text your_page__information__impotrant_information_aboutme_textplace" id="grade_text_2"></div>
+                                                <div class="your_page__information__impotrant_information_aboutme_circle" id="grade_text_3__circle"></div>
+                                                <div class="text your_page__information__impotrant_information_aboutme_textplace" id="grade_text_3"></div>
                                             </div>
                                         </div>
                                         <div class="text your_page__information_textplace" id="work_display_text"></div>
@@ -317,7 +324,9 @@
                 </div>
             </footer>
         </main>
-        <script src="js/script.js">
+        <script src="js/script.js"></script>
+        <script>
+            flatpickr("input[type=date]", {});
         </script>
     </body>
 </html>

@@ -3,7 +3,9 @@ const imgElement = document.createElement('img');
 const cross = document.createElement('img');
 const removedElements = [];
 const fileInput = document.getElementById('input_file');
-const imageContainer = document.getElementById('image_container')
+const imageContainer = document.getElementById('image_container');
+let correctNumberFlug = false;
+let correctTgFlug = false;
 
 function uploadAva() {
     fileInput.addEventListener('change', function (e) {
@@ -50,6 +52,18 @@ function closePhoto() {
     });
 };
 
+function sex() {
+    const radioButtons = document.querySelectorAll('input[type="radio"][name="radio"]');
+    const resultDiv = document.getElementById('sex');
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (radio.checked) {
+                resultDiv.textContent = radio.value;
+            }
+        });
+    });
+};
+
 function correctNumber() {
     let inputNumberElement = document.getElementById('input_number');
     let labelNumberElement = document.getElementById('input_number_label');
@@ -61,12 +75,14 @@ function correctNumber() {
             inputNumberElement.style.border = "1px solid #F4F4F6";
             parentDiv.classList.remove('name');
             labelNumberElement.setAttribute('style', 'display: None');
+            correctNumberFlug = true;
         }
         else {
             parentDiv.classList.add('name');
             inputNumberElement.style.background = "rgba(255, 0, 0, 0.05)";
             inputNumberElement.style.border = "1px solid #ff0000";
             labelNumberElement.removeAttribute("style");
+            correctNumberFlug = false;
         };
     });
 };
@@ -84,6 +100,7 @@ function correctTg() {
             inputNumberElement.style.border = "1px solid #F4F4F6";
             parentDiv.classList.remove('name');
             labelNumberElement.setAttribute('style', 'display: None');
+            correctTgFlug = true;
         }
         else if (tg[0] != '@') {
             parentDiv.classList.add('name');
@@ -93,6 +110,7 @@ function correctTg() {
             labelNumberElement.removeAttribute("style");
             textElementDog.removeAttribute('style');
             textElementLenght.setAttribute('style', 'display: None');
+            correctTgFlug = false;
         }
         else {
             parentDiv.classList.add('name');
@@ -101,6 +119,7 @@ function correctTg() {
             labelNumberElement.removeAttribute("style");
             textElementLenght.removeAttribute('style');
             textElementDog.setAttribute('style', 'display: None');
+            correctTgFlug = false;
         };
     });
 };
@@ -133,9 +152,7 @@ function buttonContinue() {
     let countError = 0;
     document.getElementById('continue').addEventListener('click', function(event) {
         event.preventDefault();
-        errorContinue();
-        console.log(count)
-    });
+        errorContinue();});
     document.getElementById('continue').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             event.preventDefault();
@@ -169,14 +186,12 @@ function buttonContinue() {
                         let errorLabel = fields[i].nextElementSibling;
                         if (errorLabel && errorLabel.tagName === "LABEL") {
                             errorLabel.remove();
-                            countError -= 1
-                            console.log(countError);
-                        };
+                            countError -= 1};
                     });
                 };
             };
         };
-        if (countError === 0) {
+        if (countError === 0 && correctNumberFlug === true && correctTgFlug === true) {
             isValid = true;
         }
         else {
@@ -244,63 +259,78 @@ function textWorkStudent() {
     });
 };
 
-// function grade() {
-//     document.addEventListener("DOMContentLoaded", function () {
-//         const gradeLabels = document.querySelectorAll(".grade_education");
-//         gradeLabels.forEach(function (label) {
-//             label.addEventListener("click", function () {
-//                 gradeLabels.forEach(function (label) {
-//                     label.classList.remove("selected");
-//                 });
-//                 label.classList.add("selected");
-//                 const selectedValue = label.querySelector("input").value;
-//                 const result = document.getElementById("grade_text");
-//                 if (selectedValue) {
-//                     result.style.background = "none";
-//                   } 
-//                 else {
-//                     result.style.background = "#EEEEF1";
-//                   };
-//                 result.textContent = selectedValue;
-//             });
-//         });
-//     });     
-// }
-function grade()
-{document.addEventListener("DOMContentLoaded", function () {
-    const gradeLabels = document.querySelectorAll(".grade_education");
-    const endCheckbox = document.getElementById("end");
-    const result = document.getElementById("grade_text");
+function grade() {
+    document.addEventListener("DOMContentLoaded", function () {
+        const gradeLabels = document.querySelectorAll(".grade_education");
+        const endCheckbox = document.getElementById("end");
+        const result = document.getElementById("grade_text");
 
-    gradeLabels.forEach(function (label) {
-        label.addEventListener("click", function () {
+        gradeLabels.forEach(function (label) {
+            label.addEventListener("click", function () {
+                gradeLabels.forEach(function (label) {
+                    label.classList.remove("selected");
+                });
+                label.classList.add("selected");
+                endCheckbox.checked = false;
+                const selectedValue = label.querySelector("input").value;
+                if (selectedValue) {
+                    result.style.background = "none";
+                    } 
+                else {
+                    result.style.background = "#EEEEF1";
+                    };
+                result.textContent = selectedValue + " курс";
+            });
+        });
+
+        endCheckbox.addEventListener("change", function () {
             gradeLabels.forEach(function (label) {
                 label.classList.remove("selected");
             });
-            label.classList.add("selected");
-            endCheckbox.checked = false;
-            const selectedValue = label.querySelector("input").value;
-            if (selectedValue) {
-                result.style.background = "none";
-                } 
-            else {
-                result.style.background = "#EEEEF1";
-                };
-            result.textContent = selectedValue + " курс";
+            result.textContent = "Уже окончил";
+            result.style.background = "none";
         });
+    });    
+};
+
+function selectLevelEducation() {
+    const select = document.getElementById("level_education");
+    const div = document.getElementById("grade_text_1");
+    const circle = document.getElementById("grade_text_1__circle")
+    select.addEventListener('change', function() {
+        const selectOption = select.options[select.selectedIndex].text;
+        div.textContent = selectOption;
+        div.style.background = "none";
+        div.style.display = 'block';
+        circle.style.display ='block';
     });
+};
 
-    endCheckbox.addEventListener("change", function () {
-        gradeLabels.forEach(function (label) {
-            label.classList.remove("selected");
-        });
-        result.textContent = "Уже окончил";
-        result.style.background = "none";
+function selectFaculty() {
+    const select = document.getElementById("faculty_education");
+    const div = document.getElementById("grade_text_2");
+    const circle = document.getElementById("grade_text_2__circle")
+    select.addEventListener('change', function() {
+        const selectOption = select.options[select.selectedIndex].text;
+        div.textContent = selectOption;
+        div.style.background = "none";
+        div.style.display = 'block';
+        circle.style.display ='block';
     });
-});}
+};
 
-
-
+function selectOp() {
+    const select = document.getElementById("op_education");
+    const div = document.getElementById("grade_text_3");
+    const circle = document.getElementById("grade_text_3__circle")
+    select.addEventListener('change', function() {
+        const selectOption = select.options[select.selectedIndex].text;
+        div.textContent = selectOption;
+        div.style.background = "none";
+        div.style.display = 'block';
+        circle.style.display ='block';
+    });
+};
 
 uploadAva();
 closePhoto();
@@ -312,3 +342,7 @@ employeeOrStudent();
 textWork();
 textWorkStudent();
 grade();
+selectLevelEducation();
+selectFaculty();
+selectOp();
+sex();
