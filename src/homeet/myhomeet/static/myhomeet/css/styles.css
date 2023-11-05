@@ -10,21 +10,7 @@
     src: url('../fonts/MuseoSansCyrl500.woff2') format('woff2')
 }
 
-#page2 {
-    display: None;
-}
-
-#flex_page2 {
-    display: None;
-}
-
-#die_student {
-    display: None;
-}
-
 body {
-    font-family: 'MuseoSansCyrl';
-
     margin: 0;
     padding: 0;
 }
@@ -51,18 +37,45 @@ a {
     text-decoration: none;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+label[for="id_sex_0"] {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }
 
-input[type='number'],
-input[type="number"]:hover,
-input[type="number"]:focus {
-    appearance: none;
-    -moz-appearance: textfield;
+label[for="id_sex_1"] {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }
 
+label[for^="id_level_"] {
+    height: 35px;
+    width: 32px;
+    background-color: #F4F4F6;
+    border-radius: 8px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+label[for^="id_level_"]:active {
+    background-color: #7953c3;
+    color: #fff;
+}
+
+#id_level {
+    height: 56px;
+    width: 336px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    background-color: #F4F4F6;
+    border-radius: 8px;
+    justify-content: space-around;
+    align-items: center;
+}
 
 .bold_text {
     font-family: MuseoSansCyrl;
@@ -96,18 +109,10 @@ input[type="number"]:focus {
 }
 
 .your_page__information_text {
-    height: 11px;
-    max-height: 11px;
-
-    border-radius: 4px;
-    background: #EEEEF1;    
     font-weight: 400;
     font-size: 9px;
-    padding: 0px 4px;
 
     color: #5D5B66;
-
-    overflow: hidden;
 }
 
 .die_text{
@@ -119,10 +124,6 @@ input[type="number"]:focus {
     font-size: 14px;
     font-weight: 400;
     color: #5D5B66;
-}
-
-.err {
-    color: #ff0000;
 }
 
 .sex_text {
@@ -351,8 +352,9 @@ input[type="number"]:focus {
     height: 26px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 20px
 }
+
 .namepage_name__progressbar_conteiner {
     background-color: #F4F4F6;
     height: 2px;    
@@ -384,37 +386,10 @@ input[type="number"]:focus {
     border-radius: 16px;
 }
 
-.new_photo_ava_container {
-    height: 200px;
-    width: 200px;
-    border: None;
-    position: relative;
-}
-
-.new_photo_ava_container__cross_container {
-    align-items: center;
-    background-color: #fff;
-    border-radius: 24px;
-    cursor: pointer;
-    display: flex;
-    height: 18px;
-    justify-content: center;
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    width: 18px;
-    z-index: 9;
-}
-
-.new_photo_ava_container__cross {
-    height: 10px;
-    width: 10px;
-}
-
 .mainbody {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 50px;
 }
 
 .left_colomn {
@@ -430,10 +405,11 @@ input[type="number"]:focus {
     flex-direction: column;
     gap: 16px;
     align-items: center;
-    margin-bottom: 5px;
 }
 
 .name {
+    width: 366px;
+
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -454,11 +430,6 @@ input[type="number"]:focus {
     border: #F4F4F6;
 
     padding: 16px 12px;
-}
-
-.new_input_text {
-    background: rgba(255, 0, 0, 0.05);
-    border: 1px solid #ff0000;
 }
 
 .textarea {
@@ -548,10 +519,6 @@ input[type="number"]:focus {
     border-radius: 16px;
 }
 
-.new_your_page__image {
-    border: None;
-}
-
 .your_page__information_container {
     height: 218px;
 
@@ -605,16 +572,11 @@ input[type="number"]:focus {
 }
 
 .your_page__information__impotrant_information_aboutme_textplace {
-    width: auto;
+    width: 120px;
     height: 11px;
 
     border-radius: 4px;
     background: #EEEEF1;
-
-    font-size: 9px;
-    font-weight: 400;
-
-    color: #040013;
 }
 
 .your_page__information_textplace {
@@ -623,16 +585,10 @@ input[type="number"]:focus {
 
     border-radius: 4px;
     background: #EEEEF1;
-    font-weight: 400;
-    font-size: 9px;
-    padding: 0px 4px;
 
     display: flex;
+    justify-content: center;
     align-items: center;
-
-    color: #5D5B66;
-
-    overflow: hidden;
 }
 
 .your_page__no_text {
@@ -779,6 +735,11 @@ input[type="number"]:focus {
     gap: 8px;
 }
 
+.grade_education:enabled {
+    background-color: #7953c3;
+    color: #fff;
+}
+
 .grade_education {
     height: 35px;
     width: 32px;
@@ -792,13 +753,8 @@ input[type="number"]:focus {
     justify-content: center;
 }
 
-.grade_education.selected {
-    background-color: #7953c3;
-    color: #fff;
-}
-
 .select_level_education_container {
-    width: 346px;
+    width: 366px;
     height: 80px;
 
     display: flex;
@@ -814,60 +770,6 @@ input[type="number"]:focus {
     background-color: #F4F4F6;
 }
 
-.work {
-    width: 346px;
-}
-
-#student_colomn {
-    display: None;
-}
-
-#employee_colomn {
-    display: None;
-}
-
-.year {
-    width: 173px;
-}
-
-#die_employee {
-    display: None;
-}
-
-select {
-    height: 56px;
-    border-radius: 8px;
-    border: 1px solid #F4F4F6;
-    background-color: #F4F4F6;
-    padding: 10px; /* Добавьте отступы по вашему усмотрению */
-    color: #333; /* Цвет текста */
-    font-size: 16px; /* Размер шрифта */
-}
-
-select:focus {
-    outline: none;
-}
-
-#grade_text_1__circle {
-    display: none;
-}
-
-#grade_text_2__circle {
-    display: none;
-}
-
-#grade_text_3__circle {
-    display: none;
-}
-
-#grade_text_1 {
-    display: none;
-}
-
-#grade_text_2 {
-    display: none;
-}
-
-#grade_text_3 {
-    display: none;
+.page2_text {
+    width: 366px;
 }

@@ -1,0 +1,108 @@
+{% extends 'myhomeet/base.html' %}
+{% load static %}
+
+
+{% block mainbody %}
+    <section class="mainbody">
+        <form id="registration_form" method="post" action=".">
+            {% csrf_token %}
+            <div class="left_colomn">
+                <div class="photo_ava_container">
+                    <label for="input_file" class="input_file">
+                        <p class="text photo_ava">Аватар профиля</p>
+                        <button class="button_continue upload_ava">
+                            <p class="button_text upload">Загрузить</p>
+                        </button>
+                        <p class="light_text copyright upload">Загрузите до 15 фотографий, весом не более 10мб</p>
+                    </label>
+                    {{ form.photo_ava }}
+                </div>
+                <div class="name">
+                    <label for="name"><p class="text name_text">Имя и фамилия</p></label>
+                    {{ form.name }}
+                    {{ form.sex }}
+                </div>
+                <div>
+                    {{ form.date_of_birth }}
+                </div>
+                <div>
+                    {{ form.number }}
+                </div>
+                <div>
+                    {{ form.tg }}
+                </div>
+                <div class="name">
+                    <label for="aboutme"><p class="text name_text">О себе</p></label>
+                    {{ form.description }}
+                    <p class="light_text aboutme">Например: Редко готовлю, но люблю ботать на кухне по ночам. Хочу завести собаку. Очень люблю читать, играть в хорроры и смотреть аниме. Открыт к общению и взаимопомощи :)</p>
+                </div>
+            </div>
+        </form>
+        <div class="right_column">
+            <div class="your_page_container">
+                <p class="text die_text" style="padding-left: 8px;">Так будет выглядеть твоя будущая страница</p>
+                <div class="die your_page">
+                    <div class="your_page__image_container">
+                        <div class="your_page__image"></div>
+                        <button class="button your_page__image_button">
+                            <p class="bold_text image_button">Показать контакты</p>
+                        </button>
+                    </div>
+                    <div class="your_page__information_container">
+                        <div class="your_page__information">
+                            <div class="your_page__information__impotrant_information_container">
+                                <div class="your_page__information__impotrant_information_name">
+                                    <p class="bold_text important_information_name_text">Дмитрий Лобанев</p>
+                                </div>
+                                <div class="your_page__information__impotrant_information_aboutme">
+                                    <p class="text your_page__information__impotrant_information_aboutme_text">Парень</p>
+                                    <div class="your_page__information__impotrant_information_aboutme_circle"></div>
+                                    <p class="text your_page__information__impotrant_information_aboutme_text">18 лет</p>
+                                    <div class="your_page__information__impotrant_information_aboutme_circle"></div>
+                                    <div class="your_page__information__impotrant_information_aboutme_textplace"></div>
+                                </div>
+                            </div>
+                            <div class="your_page__information_textplace"></div>
+                            <p class="text your_page__information_text">Мне очень нравится устраивать вечеринки, дебоширить и мазать с...</p>
+                        </div>
+                        <div class="your_page__no_text">
+                            <div class="your_page__no_text__first_part">
+                                <div class="your_page__no_text__first_part__none"></div>
+                                <div class="your_page__no_text__first_part__textplace_container">
+                                    <div class="your_page__no_text__first_part__first_textplace"></div>
+                                    <div class="your_page__no_text__first_part__second_textplace"></div>
+                                </div>
+                            </div>
+                            <div class="your_page__no_text__second_part">
+                                <div class="your_page__no_text__second_part__line"></div>
+                                <div class="your_page__no_text__second_part__textplace_container">
+                                    <div class="your_page__no_text__second_part__first_textplace"></div>
+                                    <div class="your_page__no_text__second_part__second_textplace"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="die">
+                <div class="die_text_container">
+                    <div class="text_die">
+                        <p class="bold_text die_bold_text">Мы совсем ничего про тебя не знаем</p>
+                        <div>
+                            <p class="text die_text">Расскажи о себе.</p>
+                            <p class="text die_text">Люди пишут тем, кому доверяют. Тем более при поиске соседа</p>
+                        </div>
+                    </div>
+                    <img src={% static 'myhomeet/images/smile.svg' %} alt="smile">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="continue">
+        <a href="{% url 'second' %}">
+            <button class="button_continue" id="continue">
+                <p class="button_continue_text">Продолжить</p>
+            </button>
+        </a>
+    </section>
+{% endblock mainbody %}

@@ -1,0 +1,117 @@
+{% extends 'myhomeet/base.html' %}
+{% load static %}
+
+
+{% block mainbody %}
+    <section class="mainbody">
+        <form id="registration_form" name="registration_form" method="post" action=".">
+            {% csrf_token %}
+            <div class="left_colomn">
+                <div class="who_are_you">
+                    <div class="student">
+                        <label for="student">
+                        <input type="radio" name="radio" id="student" class="radio-label">
+                        <p class="text sex_text">Студент / выпускник</p>
+                        </label>
+                    </div>
+                    <div class="employee">
+                        <input type="radio" name="radio" id="employee" class="radio-label">
+                        <label for="woman"><p class="text sex_text">Сотрудник</p></label>
+                    </div>
+                </div>
+                <div class="grade_container">
+                    <p class="text grade_text">Курс</p>
+                    {{ form.level }}
+                    <div class="grade_education_end">
+                        {{ form.endlevel }}
+                        <label for="end" class="text sex_text">Уже окончил</label>
+                    </div>
+                </div>
+                <div class="select_level_education_container">
+                    <label for="level_education">Ступень образования</label>
+                    {{ form.education }}
+                </div>
+                <div class="select_level_education_container">
+                    <label for="level_education">Факультет</label>
+                    {{ form.faculty }}
+                </div>
+                <div class="select_level_education_container">
+                    <label for="level_education">Образовательная программа</label>
+                    {{ form.program }}
+                </div>
+                <div>
+                    {{ form.work }}
+                </div>
+            </div>
+            <button class="button_continue" id="continue" type="submit" form="registration_form">
+                <p class="button_continue_text">Сохранить</p>
+            </button>
+        </form>
+        <div class="right_column">
+            <div class="your_page_container">
+                <p class="text die_text" style="padding-left: 8px;">Так будет выглядеть твоя будущая страница</p>
+                <div class="die your_page">
+                    <div class="your_page__image_container">
+                        <div class="your_page__image">
+                            <img src={% static 'myhomeet/images/ava.svg' %} alt="avatar" width="140px" height="140px" style="border-radius: 8px;">
+                        </div>
+                        <button class="button your_page__image_button">
+                            <p class="bold_text image_button">Показать контакты</p>
+                        </button>
+                    </div>
+                    <div class="your_page__information_container">
+                        <div class="your_page__information">
+                            <div class="your_page__information__impotrant_information_container">
+                                <div class="your_page__information__impotrant_information_name">
+                                    <p class="bold_text important_information_name_text">Дмитрий Лобанев</p>
+                                </div>
+                                <div class="your_page__information__impotrant_information_aboutme">
+                                    <p class="text your_page__information__impotrant_information_aboutme_text">Парень</p>
+                                    <div class="your_page__information__impotrant_information_aboutme_circle"></div>
+                                    <p class="text your_page__information__impotrant_information_aboutme_text">18 лет</p>
+                                    <div class="your_page__information__impotrant_information_aboutme_circle"></div>
+                                    <p class="your_page__information__impotrant_information_aboutme_text">Первый курс бакалавриат МИЭМ ИВТ</p>
+                                </div>
+                            </div>
+                            <div class="your_page__information_textplace">
+                                <p class="your_page__information__impotrant_information_aboutme_text">Отсутствует</p>
+                            </div>
+                            <p class="text your_page__information_text">Мне очень нравится устраивать вечеринки, дебоширить и мазать с...</p>
+                        </div>
+                        <div class="your_page__no_text">
+                            <div class="your_page__no_text__first_part">
+                                <div class="your_page__no_text__first_part__none"></div>
+                                <div class="your_page__no_text__first_part__textplace_container">
+                                    <div class="your_page__no_text__first_part__first_textplace"></div>
+                                    <div class="your_page__no_text__first_part__second_textplace"></div>
+                                </div>
+                            </div>
+                            <div class="your_page__no_text__second_part">
+                                <div class="your_page__no_text__second_part__line"></div>
+                                <div class="your_page__no_text__second_part__textplace_container">
+                                    <div class="your_page__no_text__second_part__first_textplace"></div>
+                                    <div class="your_page__no_text__second_part__second_textplace"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="die">
+                <div class="die_text_container">
+                    <div class="text_die">
+                        <p class="bold_text die_bold_text">Расскажи где ты учишься</p>
+                        <div>
+                            <br>
+                            <p class="text die_text">Часто студенты ищут соседей по схожим интересам</p>
+                        </div>
+                    </div>
+                    <img src={% static 'myhomeet/images/smile.svg' %} alt="smile">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="continue">  
+        
+    </section>
+{% endblock mainbody %}
