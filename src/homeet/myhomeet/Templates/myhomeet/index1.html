@@ -4,7 +4,7 @@
 
 {% block mainbody %}
     <section class="mainbody">
-        <form id="registration_form" method="post" action=".">
+        <form id="registration_form", name="registration_form" method="post" enctype="multipart/form-data" action=".">
             {% csrf_token %}
             <div class="left_colomn">
                 <div class="photo_ava_container">
@@ -99,10 +99,8 @@
         </div>
     </section>
     <section class="continue">
-        <a href="{% url 'second' %}">
-            <button class="button_continue" id="continue">
-                <p class="button_continue_text">Продолжить</p>
-            </button>
-        </a>
+        <button class="button_continue" id="continue" type="submit" form="registration_form">
+            <p class="button_continue_text">Продолжить</p>
+        </button>
     </section>
 {% endblock mainbody %}

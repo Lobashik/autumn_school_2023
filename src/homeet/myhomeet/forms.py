@@ -47,14 +47,14 @@ class HomeetUserCreationForm(forms.ModelForm):
     photo_ava = forms.ImageField(widget=forms.FileInput(attrs={'id': 'input_file', 'accept': '.png,.jpg,.jpeg', 'style': 'display: none'}))
     date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'class': 'data', 'placeholder': 'Дата рождения', 'type': 'date'}))
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'input_text textarea'}))
-    who_are_you = forms.ChoiceField(choices=choice_role, widget=forms.RadioSelect(attrs={'name': 'radio', 'class': 'radio-label'}))
-    level = forms.ChoiceField(choices=choice_level, widget=forms.RadioSelect(choices=choice_level, attrs={'name': 'grade', 'style': 'display: none'}))
+    who_are_you = forms.ChoiceField(required=False, choices=choice_role, widget=forms.RadioSelect(attrs={'name': 'radio', 'class': 'radio-label'}))
+    level = forms.ChoiceField(required=False, choices=choice_level, widget=forms.RadioSelect(attrs={'name': 'grade', 'style': 'display: none'}, choices=choice_level))
     endlevel = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'id': 'end', 'name': 'grade'}))
-    education = forms.ChoiceField(choices=choice_education, widget=forms.Select(attrs={'class': 'select_level_education'}))
-    faculty = forms.ChoiceField(choices=choice_faculty, widget=forms.Select(attrs={'class': 'select_level_education'}))
-    program = forms.ChoiceField(choices=choice_program, widget=forms.Select(attrs={'class': 'select_level_education'}))
-    work = forms.CharField(widget=forms.TextInput(attrs={'class': 'input_text page2_text', 'placeholder': 'Кем вы работаете?'}))
-    year_start_work = forms.DateField(label="Год начала работы", widget=forms.DateInput(attrs={'class': 'data'}))
+    education = forms.ChoiceField(required=False, choices=choice_education, widget=forms.Select(attrs={'class': 'select_level_education'}))
+    faculty = forms.ChoiceField(required=False, choices=choice_faculty, widget=forms.Select(attrs={'class': 'select_level_education'}))
+    program = forms.ChoiceField(required=False, choices=choice_program, widget=forms.Select(attrs={'class': 'select_level_education'}))
+    work = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'input_text page2_text', 'placeholder': 'Кем вы работаете?'}))
+    year_start_work = forms.DateField(required=False, label="Год начала работы", widget=forms.DateInput(attrs={'class': 'data'}))
 
     class Meta:
         model = HomeetUser

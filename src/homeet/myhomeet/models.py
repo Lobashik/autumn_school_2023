@@ -73,7 +73,7 @@ class HomeetUser(AbstractBaseUser, PermissionsMixin):
     photo_ava = models.ImageField(upload_to="photos/", verbose_name="Аватар профиля")
     date_of_birth = models.DateField(verbose_name="Дата рождения")
     description = models.TextField(blank=False, verbose_name="О себе")
-    who_are_you = models.CharField(max_length=1, choices=choice_role, verbose_name='Студент или сотрудник')
+    who_are_you = models.CharField(max_length=1, choices=choice_role, verbose_name='Студент или сотрудник', null=True, blank=True)
     level = models.CharField(max_length=20, choices=choice_level + [(endlevel, 'Уже окончил')], null=True, blank=True, verbose_name='Курс')
     education = models.CharField(max_length=20, choices=choice_education, null=True, blank=True, verbose_name="Ступень образования")
     faculty = models.CharField(max_length=100, choices=choice_faculty, null=True, blank=True, verbose_name="Факультет")
