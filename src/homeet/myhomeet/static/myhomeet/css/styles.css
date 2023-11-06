@@ -49,6 +49,12 @@ label[for="id_sex_1"] {
     gap: 8px;
 }
 
+label[for^="id_who_are_you_"] {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
 label[for^="id_level_"] {
     height: 35px;
     width: 32px;
@@ -706,7 +712,7 @@ label[for^="id_level_"]:active {
     width: 434px;
 }
 
-.who_are_you {
+#id_who_are_you {
     display: flex;
     flex-direction: row;
     gap: 16px;

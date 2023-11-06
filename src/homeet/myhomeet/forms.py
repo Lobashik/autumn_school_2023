@@ -40,13 +40,13 @@ class HomeetUserCreationForm(forms.ModelForm):
         ('PM', 'ПМ'),
     ]
 
-    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input_text'}))
-    sex = forms.ChoiceField(choices=choice_sex, widget=forms.RadioSelect(attrs={'class': 'sex'}))
-    tg = forms.CharField(widget=forms.TextInput(attrs={'class': 'input_text', 'placeholder': 'Ник в телеграме'}))
-    number = forms.CharField(widget=forms.TextInput(attrs={'class': 'input_text', 'placeholder': 'Номер телефона'}))
-    photo_ava = forms.ImageField(widget=forms.FileInput(attrs={'id': 'input_file', 'accept': '.png,.jpg,.jpeg', 'style': 'display: none'}))
-    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'class': 'data', 'placeholder': 'Дата рождения', 'type': 'date'}))
-    description = forms.CharField(widget=forms.Textarea(attrs={'class': 'input_text textarea'}))
+    name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'input_text'}))
+    sex = forms.ChoiceField(required=False, choices=choice_sex, widget=forms.RadioSelect(attrs={'class': 'sex'}))
+    tg = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'input_text', 'placeholder': 'Ник в телеграме'}))
+    number = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'input_text', 'placeholder': 'Номер телефона'}))
+    photo_ava = forms.ImageField(required=False, widget=forms.FileInput(attrs={'id': 'input_file', 'accept': '.png,.jpg,.jpeg', 'style': 'display: none'}))
+    date_of_birth = forms.DateField(required=False, widget=forms.DateInput(attrs={'class': 'data', 'placeholder': 'Дата рождения', 'type': 'date'}))
+    description = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'input_text textarea'}))
     who_are_you = forms.ChoiceField(required=False, choices=choice_role, widget=forms.RadioSelect(attrs={'name': 'radio', 'class': 'radio-label'}))
     level = forms.ChoiceField(required=False, choices=choice_level, widget=forms.RadioSelect(attrs={'name': 'grade', 'style': 'display: none'}, choices=choice_level))
     endlevel = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'id': 'end', 'name': 'grade'}))

@@ -7,18 +7,7 @@
         <form id="registration_form" name="registration_form" method="post" action=".">
             {% csrf_token %}
             <div class="left_colomn">
-                <div class="who_are_you">
-                    <div class="student">
-                        <label for="student">
-                        <input type="radio" name="radio" id="student" class="radio-label">
-                        <p class="text sex_text">Студент / выпускник</p>
-                        </label>
-                    </div>
-                    <div class="employee">
-                        <input type="radio" name="radio" id="employee" class="radio-label">
-                        <label for="woman"><p class="text sex_text">Сотрудник</p></label>
-                    </div>
-                </div>
+                {{ form.who_are_you }}
                 <div class="grade_container">
                     <p class="text grade_text">Курс</p>
                     {{ form.level }}
@@ -43,9 +32,6 @@
                     {{ form.work }}
                 </div>
             </div>
-            <button class="button_continue" id="continue" type="submit" form="registration_form">
-                <p class="button_continue_text">Сохранить</p>
-            </button>
         </form>
         <div class="right_column">
             <div class="your_page_container">
@@ -112,6 +98,8 @@
         </div>
     </section>
     <section class="continue">  
-        
+        <button class="button_continue" id="continue" type="submit" form="registration_form">
+            <p class="button_continue_text">Сохранить</p>
+        </button>
     </section>
 {% endblock mainbody %}
