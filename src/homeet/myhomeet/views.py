@@ -16,7 +16,7 @@ def first_register(request):
                 file_name = default_storage.save(uploaded_file.name, uploaded_file)
                 url = default_storage.url(file_name)
                 print(data['photo_ava'])
-                data['photo_ava'] = 'photos' + url
+                data['photo_ava'] = url[7:]
                 data['date_of_birth'] = data['date_of_birth'].isoformat()
                 print(data['photo_ava'])
             request.session['first_page_data'] = data
