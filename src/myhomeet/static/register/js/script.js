@@ -30,7 +30,7 @@ function uploadAva() {
             crossContainer.classList.add('new_photo_ava_container__cross_container');
             newPhotoContainer.appendChild(crossContainer);
             cross.classList.add('new_photo_ava_container__cross');
-            cross.src = './img/cross.svg'
+            cross.src = '/static/register/img/cross.svg'
             crossContainer.appendChild(cross);
         };
         reader.readAsDataURL(selectedFile);
@@ -53,7 +53,7 @@ function closePhoto() {
 };
 
 function sex() {
-    const radioButtons = document.querySelectorAll('input[type="radio"][name="radio"]');
+    const radioButtons = document.querySelectorAll('input[type="radio"][name="sex"]');
     const resultDiv = document.getElementById('sex');
     radioButtons.forEach(radio => {
         radio.addEventListener('change', function() {
@@ -204,6 +204,8 @@ function buttonContinue() {
             document.getElementById("flex_page1").style.display = "None";
             document.getElementById("die_student").style.display = "block";
             document.getElementById("die_page1").style.display = "None";
+            document.getElementById("register").style.display = "inline-block";
+            document.getElementById("continue").style.display = "None";
         };
     };   
 };
@@ -331,6 +333,60 @@ function selectOp() {
         circle.style.display ='block';
     });
 };
+
+function postData() {
+    const formData = new FormData(document.getElementById("registration_form"));
+    console.log(formData.get('photo_ava'));
+
+    fetch('/register/api/user/', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        alert('User saved successfully!');
+        document.getElementById("registration_form").reset();
+        fetchItems(); // Refresh the items list after posting
+    })
+    .catch(error => {
+        if (response.status === 400) {
+            for (const field in data.errors) {
+                const errorField = document.getElementById(`${field}Error`);
+                errorField.textContent = data.errors[field];
+            }
+        }
+        console.error('Error:', error);
+    });
+}
+
+// Fetch and display items
+// function fetchUser() {
+//     fetch('/myapp/api/items/')
+//     .then(response => response.json())
+//     .then(data => {
+//         const itemsList = document.getElementById("itemsList");
+//         itemsList.innerHTML = '';
+
+//         data.forEach(item => {
+//             const row = itemsList.insertRow();
+//             const nameCell = row.insertCell(0);
+//             const descriptionCell = row.insertCell(1);
+//             const priceCell = row.insertCell(2);
+//             const activeCell = row.insertCell(3);
+
+//             nameCell.textContent = item.name;
+//             descriptionCell.textContent = item.description;
+//             priceCell.textContent = item.price;
+//             activeCell.textContent = item.is_active ? 'Yes' : 'No';
+//         });
+//     })
+//     .catch(error => {
+//         console.error('Error:', error);
+//     });
+// }
+
+// window.onload = fetchUser;
 
 uploadAva();
 closePhoto();

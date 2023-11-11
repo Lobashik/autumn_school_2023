@@ -1,11 +1,14 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="{% static 'register/css/styles.css' %}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <link rel="shortcut icon" href="{% static 'register/icons/favicon.ico' %}">
         <script src=" https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <title>Создание профиля</title>
     </head>
@@ -13,7 +16,7 @@
         <main>
             <header class="header">
                 <div class="header_container">
-                    <img src="icons/homeet_icon.svg" alt="HOMEET HSE">
+                    <img src={% static 'register/icons/homeet_icon.svg' %} alt="HOMEET HSE">
                     <button class="button out">
                         <p class="button_text out">Выйти из аккаунта</p>
                     </button>
@@ -54,7 +57,8 @@
                     </div>
                 </section>
                 <section class="mainbody">
-                    <form id="registration_form">
+                    <form id="registration_form" enctype="multipart/form-data>
+                        {% csrf_token %}
                         <div class="left_colomn" id="flex_page1">
                             <div class="photo_ava_container" id="photo_ava_container">
                                 <label for="input_file" class="input_file">
@@ -64,41 +68,39 @@
                                     </button>
                                     <p class="light_text copyright upload">Загрузите до 15 фотографий, весом не более 10мб</p>
                                 </label>
-                                <input type="file" id="input_file" accept=".png,.jpg,.jpeg" style="display: none;">
+                                <input type="file" name="photo_ava" id="input_file" accept=".png,.jpg,.jpeg" style="display: none;">
                             </div>
                             <div class="name">
                                 <label for="name"><p class="text name_text">Имя и фамилия</p></label>
-                                <input type="text" id="name" value="Дмитрий Лобанев" class="input_text">
+                                <input type="text" name="name" id="name" value="Дмитрий Лобанев" class="input_text">
                                 <div class="sex">
                                     <div class="man">
-                                        <label for="man">
-                                        <input type="radio" name="radio" id="man" class="radio-label" value="Парень">
-                                        <p class="text sex_text">Парень</p>
-                                        </label>
+                                        <input type="radio" name="sex" id="man" class="radio-label" value="Парень">
+                                        <label for="man"><p class="text sex_text">Парень</p></label>
                                     </div>
                                     <div class="woman">
-                                        <input type="radio" name="radio" id="woman" class="radio-label" value="Девушка">
+                                        <input type="radio" name="sex" id="woman" class="radio-label" value="Девушка">
                                         <label for="woman"><p class="text sex_text">Девушка</p></label>
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <input type="date" class="data" placeholder="Дата рождения" id="data">
+                                <input type="date" name="date_of_birth" class="data" placeholder="Дата рождения" id="data">
                             </div>
                             <div>
                                 <label for="input_number" style="display: None;" id="input_number_label"><p class="text name_text err">Номер телефона | неверный формат</p></label>
-                                <input type="number" placeholder="Номер телефона" class="input_text" id="input_number">
+                                <input type="number" name="number" placeholder="Номер телефона" class="input_text" id="input_number">
                             </div>
                             <div>
                                 <label for="input_tg" style="display: None" id="input_tg_label">
                                     <p class="text name_text err" style="display: None;" id="dog">Ник в телеграме должен начинаться с "@"</p>
                                     <p class="text name_text err" style="display: None;" id="length">Ник в телеграме содержит минимум 5 символов</p>
                                 </label>
-                                <input type="text" placeholder="Ник в телеграме" class="input_text" id="input_tg">
+                                <input type="text" name="tg" placeholder="Ник в телеграме" class="input_text" id="input_tg">
                             </div>
                             <div class="name">
                                 <label for="aboutme"><p class="text name_text">О себе</p></label>
-                                <textarea id="aboutme" class="input_text textarea"></textarea>
+                                <textarea id="aboutme" name="description" class="input_text textarea"></textarea>
                                 <p class="light_text aboutme">Например: Редко готовлю, но люблю ботать на кухне по ночам. Хочу завести собаку. Очень люблю читать, играть в хорроры и смотреть аниме. Открыт к общению и взаимопомощи :)</p>
                             </div>
                         </div>
@@ -106,12 +108,12 @@
                             <div class="who_are_you">
                                 <div class="student">
                                     <label for="student">
-                                    <input type="radio" name="radio_type" id="student" class="radio-label">
+                                    <input type="radio" name="who_are_you" id="student" class="radio-label">
                                     <p class="text sex_text">Студент / выпускник</p>
                                     </label>
                                 </div>
                                 <div class="employee">
-                                    <input type="radio" name="radio_type" id="employee" class="radio-label">
+                                    <input type="radio" name="who_are_you" id="employee" class="radio-label">
                                     <label for="woman"><p class="text sex_text">Сотрудник</p></label>
                                 </div>
                             </div>
@@ -120,38 +122,38 @@
                                     <p class="text grade_text">Курс</p>
                                     <div class="grade">
                                         <label class="grade_education" for="grage">
-                                            <input type="radio" name="grade" value="1" style="display: none;" id="1">
+                                            <input type="radio" name="level" value="1" style="display: none;" id="1">
                                             1
                                         </label>
                                         <label class="grade_education" for="grage">
-                                            <input type="radio" name="grade" value="2" style="display: none;" id="2">
+                                            <input type="radio" name="level" value="2" style="display: none;" id="2">
                                             2
                                         </label>
                                         <label class="grade_education" for="grage">
-                                            <input type="radio" name="grade" value="3" style="display: none;" id="3">
+                                            <input type="radio" name="level" value="3" style="display: none;" id="3">
                                             3
                                         </label>
                                         <label class="grade_education" for="grage">
-                                            <input type="radio" name="grade" value="4" style="display: none;" id="4">
+                                            <input type="radio" name="level" value="4" style="display: none;" id="4">
                                             4
                                         </label>
                                         <label class="grade_education" for="grage">
-                                            <input type="radio" name="grade" value="5" style="display: none;" id="5">
+                                            <input type="radio" name="level" value="5" style="display: none;" id="5">
                                             5
                                         </label>
                                         <label class="grade_education" for="grage">
-                                            <input type="radio" name="grade" value="6" style="display: none;" id="6">
+                                            <input type="radio" name="level" value="6" style="display: none;" id="6">
                                             6
                                         </label>
                                     </div>
                                     <div class="grade_education_end">
-                                        <input type="checkbox" id="end" name="grade">
+                                        <input type="checkbox" id="end" name="level">
                                         <label for="end" class="text sex_text">Уже окончил</label>
                                     </div>
                                 </div>
                                 <div class="select_level_education_container">
                                     <label for="level_education">Ступень образования</label>
-                                    <select class="select_level_education" name="level_education" id="level_education">
+                                    <select class="select_level_education" name="education" id="level_education">
                                         <option value="" disabled selected>Ступень образования</option>
                                         <option value="bachelor">Бакалавриат</option>
                                         <option value="magistracy">Магистратура</option>
@@ -160,7 +162,7 @@
                                 </div>
                                 <div class="select_level_education_container">
                                     <label for="faculty_education">Факультет</label>
-                                    <select class="select_level_education" name="level_education" id="faculty_education">
+                                    <select class="select_level_education" name="faculty" id="faculty_education">
                                         <option value="" disabled selected>Факультет</option>
                                         <option value="bachelor">МИЭМ</option>
                                         <option value="magistracy">ФКН</option>
@@ -169,7 +171,7 @@
                                 </div>
                                 <div class="select_level_education_container">
                                     <label for="op_education">Образовательная программа</label>
-                                    <select class="select_level_education" name="level_education" id="op_education">
+                                    <select class="select_level_education" name="program" id="op_education">
                                         <option value="" disabled selected>Образовательная программа</option>
                                         <option value="bachelor">ИВТ</option>
                                         <option value="magistracy">ИБ</option>
@@ -177,15 +179,15 @@
                                     </select>
                                 </div>
                                 <div class="work">
-                                    <input type="text" placeholder="Работа" class="input_text" id="work_student">
+                                    <input type="text" name="work" placeholder="Работа" class="input_text" id="work_student">
                                 </div>
                             </div>
                             <div class="left_colomn" id="employee_colomn">
                                 <div class="work">
-                                    <input type="text" placeholder="Кем вы работаете" class="input_text" id="work">
+                                    <input type="text" name="work" placeholder="Кем вы работаете" class="input_text" id="work">
                                 </div>
                                 <div class="year">
-                                    <input type="number" placeholder="2023" class="input_text">
+                                    <input type="number" name="year_start_work" placeholder="2023" class="input_text">
                                 </div>
                             </div>
                         </div>
@@ -251,7 +253,7 @@
                                         <p class="text die_text">Люди пишут тем, кому доверяют. Тем более при поиске соседа</p>
                                     </div>
                                 </div>
-                                <img src="img/smile.svg" alt="smile">
+                                <img src={% static 'register/img/smile.svg' %} alt="smile">
                             </div>
                         </div>
                         <div class="die" id="die_student">
@@ -263,7 +265,7 @@
                                         <p class="text die_text">Часто студенты ищут соседей по схожим интересам</p>
                                     </div>
                                 </div>
-                                <img src="img/smile.svg" alt="smile">
+                                <img src={% static 'register/img/smile.svg' %} alt="smile">
                             </div>
                         </div>
                         <div class="die" id="die_employee">
@@ -275,7 +277,7 @@
                                         <p class="text die_text">У студентов будет больше доверия к тем, кого они знают</p>
                                     </div>
                                 </div>
-                                <img src="img/smile.svg" alt="smile">
+                                <img src={% static 'register/img/smile.svg' %} alt="smile">
                             </div>
                         </div>
                     </div>
@@ -283,6 +285,9 @@
                 <section class="continue">  
                     <button class="button_continue" id="continue">
                         <p class="button_continue_text">Продолжить</p>
+                    </button>
+                    <button class="button_continue" id="register" style="display: none;" onclick="postData()">
+                        <p class="button_continue_text">Зарегистрироваться</p>
                     </button>
                 </section>
             </div>
@@ -303,10 +308,10 @@
                             </div>
                             <div class="footer_icons">
                                 <a href="#">
-                                    <img src="icons/tg_icon.svg" alt="tg">
+                                    <img src={% static 'register/icons/tg_icon.svg' %} alt="tg">
                                 </a>
                                 <a href="#">
-                                    <img src="icons/vk_icon.svg" alt="vk">
+                                    <img src={% static 'register/icons/vk_icon.svg' %} alt="vk">
                                 </a>
                             </div>
                         </div>
@@ -324,7 +329,7 @@
                 </div>
             </footer>
         </main>
-        <script src="js/script.js"></script>
+        <script src={% static 'register/js/script.js' %}></script>
         <script>
             flatpickr("input[type=date]", {});
         </script>
