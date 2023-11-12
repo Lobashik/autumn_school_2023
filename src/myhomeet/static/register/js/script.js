@@ -6,12 +6,14 @@ const fileInput = document.getElementById('input_file');
 const imageContainer = document.getElementById('image_container');
 let correctNumberFlug = false;
 let correctTgFlug = false;
+let img;
 
 function uploadAva() {
     fileInput.addEventListener('change', function (e) {
         const selectedFile = e.target.files[0];
         const reader = new FileReader();
         reader.onload = function (event) {
+            img = selectedFile;
             imgElement.src = event.target.result;
             imgElement.style.width = "100%";
             imgElement.style.height = "100%";
@@ -206,6 +208,7 @@ function buttonContinue() {
             document.getElementById("die_page1").style.display = "None";
             document.getElementById("register").style.display = "inline-block";
             document.getElementById("continue").style.display = "None";
+            window.scrollTo(0, 0)
         };
     };   
 };
@@ -336,8 +339,9 @@ function selectOp() {
 
 function postData() {
     const formData = new FormData(document.getElementById("registration_form"));
-    console.log(formData.get('photo_ava'));
-
+    formData.set('photo_ava', img);
+    const passwordValue = formData.get('tg');
+    formData.set('password', passwordValue);
     fetch('/register/api/user/', {
         method: 'POST',
         body: formData
@@ -345,9 +349,7 @@ function postData() {
     .then(response => response.json())
     .then(data => {
         console.log(data)
-        alert('User saved successfully!');
         document.getElementById("registration_form").reset();
-        fetchItems(); // Refresh the items list after posting
     })
     .catch(error => {
         if (response.status === 400) {
@@ -356,7 +358,6 @@ function postData() {
                 errorField.textContent = data.errors[field];
             }
         }
-        console.error('Error:', error);
     });
 }
 

@@ -8,7 +8,6 @@ class UserManager(BaseUserManager):
         if not tg:
             raise ValueError('Tg address is required')
         user = self.model(tg=tg, **extra_fields)
-        password = tg
         user.set_password(password)
         user.save(using=self._db)
         print(user)
@@ -41,6 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('4', '4'),
         ('5', '5'),
         ('6', '6'),
+        ('END', 'Уже закончил')
     ]
 
     choice_education = [
