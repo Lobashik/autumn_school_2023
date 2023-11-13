@@ -16,10 +16,12 @@
         <main>
             <header class="header">
                 <div class="header_container">
-                    <img src={% static 'register/icons/homeet_icon.svg' %} alt="HOMEET HSE">
-                    <button class="button out">
-                        <p class="button_text out">Выйти из аккаунта</p>
-                    </button>
+                    <img src="{% static 'register/icons/homeet_icon.svg' %}" alt="HOMEET HSE">
+                    <a href="{% url 'register:page1' %}">
+                        <button class="button out">
+                            <p class="button_text out">Выйти из аккаунта</p>
+                        </button>
+                    </a>
                 </div>
             </header>
             <div class="main_container">

@@ -340,8 +340,7 @@ function selectOp() {
 function postData() {
     const formData = new FormData(document.getElementById("registration_form"));
     formData.set('photo_ava', img);
-    const passwordValue = formData.get('tg');
-    formData.set('password', passwordValue);
+    formData.set('password', formData.get('tg'))
     fetch('/register/api/user/', {
         method: 'POST',
         body: formData

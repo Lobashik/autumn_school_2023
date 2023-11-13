@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.viewsets import ModelViewSet
@@ -14,8 +15,8 @@ USER = get_user_model()
 class UserAPIView(APIView):
     serializer_class = serializers.UserSerializer
     def get(self, request):
-        items = USER.objects.all()
-        serializer = self.serializer_class(items, many=True)
+        users = USER.objects.all()
+        serializer = self.serializer_class(users, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -29,5 +30,11 @@ class UserViewSet(ModelViewSet):
     serializer_class = serializers.UserSerializer
     queryset = USER.objects.all()
 
+
 def index(request):
     return render(request, 'register/index.html')
+
+
+def current_user(request):
+    user = request.user
+    return HttpResponse(f"Текущий пользователь: {user.username}")
