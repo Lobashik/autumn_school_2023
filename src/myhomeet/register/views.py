@@ -1,6 +1,7 @@
+from datetime import datetime
 from django.http import HttpResponse
-from django.shortcuts import render
-from rest_framework.decorators import api_view
+from django.shortcuts import redirect, render
+from django.contrib.auth import logout, authenticate, login
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
@@ -22,9 +23,13 @@ class UserAPIView(APIView):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            user = serializer.save()
+            auth_user = authenticate(tg=user.tg, password=request.data.get('password'))
+            if auth_user:
+                login(request, auth_user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UserViewSet(ModelViewSet):
     serializer_class = serializers.UserSerializer
@@ -32,9 +37,26 @@ class UserViewSet(ModelViewSet):
 
 
 def index(request):
-    return render(request, 'register/index.html')
+    if request.user.is_authenticated:
+        return render(request, 'register/index.html', {'login': 'Выйти из аккаунта', 'logname': 'logout'})
+    else:
+        return render(request, 'register/index.html', {'login': 'Войти в аккаунт', 'logname': 'login'})
 
 
-def current_user(request):
-    user = request.user
-    return HttpResponse(f"Текущий пользователь: {user.username}")
+def logout_user(request):
+    logout(request)
+    return redirect('register:register')
+
+
+def login_user(request):
+    if request.method == 'POST':
+        tg = request.POST.get('tg')
+        password = request.POST.get('password')
+        user = authenticate(request, tg=tg, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('register:register')
+        else:
+            return HttpResponse("Нет такого пользователя")
+    else:
+        return render(request, 'register/login.html', {'login': 'Назад', 'logname': 'go_back'})

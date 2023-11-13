@@ -341,7 +341,7 @@ function postData() {
     const formData = new FormData(document.getElementById("registration_form"));
     formData.set('photo_ava', img);
     formData.set('password', formData.get('tg'))
-    fetch('/register/api/user/', {
+    fetch('/register/user/', {
         method: 'POST',
         body: formData
     })
@@ -349,6 +349,7 @@ function postData() {
     .then(data => {
         console.log(data)
         document.getElementById("registration_form").reset();
+        location.reload();
     })
     .catch(error => {
         if (response.status === 400) {

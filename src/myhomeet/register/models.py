@@ -34,12 +34,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     ]
 
     choice_level = [
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
-        ('6', '6'),
+        ('one', '1'),
+        ('two', '2'),
+        ('three', '3'),
+        ('four', '4'),
+        ('five', '5'),
+        ('six', '6'),
         ('END', 'Уже закончил')
     ]
 
@@ -64,8 +64,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('PM', 'ПМ'),
     ]
 
-    endlevel = 'Complited'
-
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     name = models.CharField(max_length=100, verbose_name="Имя и фамилия")
@@ -76,11 +74,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_of_birth = models.DateField(null=True, verbose_name="Дата рождения", )
     description = models.TextField(blank=False, verbose_name="О себе")
     who_are_you = models.CharField(max_length=1, choices=choice_role, verbose_name='Студент или сотрудник', null=True, blank=True)
-    level = models.CharField(max_length=20, choices=choice_level + [(endlevel, 'Уже окончил')], null=True, blank=True, verbose_name='Курс')
+    level = models.CharField(max_length=20, choices=choice_level, null=True, blank=True, verbose_name='Курс')
     education = models.CharField(max_length=20, choices=choice_education, null=True, blank=True, verbose_name="Ступень образования")
     faculty = models.CharField(max_length=100, choices=choice_faculty, null=True, blank=True, verbose_name="Факультет")
     program = models.CharField(max_length=100, choices=choice_program, null=True, blank=True, verbose_name="Образовательная программа")
-    work = models.CharField(max_length=150, verbose_name="Работа", default="Не работаю")
+    work = models.CharField(max_length=150, verbose_name="Работа", blank=True, default="Не работаю")
     year_start_work = models.CharField(max_length=10, null=True, blank=True, verbose_name="Начало работы")
 
     objects = UserManager()

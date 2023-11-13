@@ -1,0 +1,16 @@
+{% extends 'register/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="left_colomn" id="flex_page1">
+        <input class="input_text" type="text" name="tg" placeholder="Имя пользователя">
+        <input class="input_text" type="password" name="password" placeholder="Пароль">
+        <button class="button_continue" type="submit">
+            <p class="button_continue_text">Войти</p>
+        </button>
+    </div>
+  </form>
+{% endblock content %}
