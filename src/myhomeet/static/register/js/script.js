@@ -381,6 +381,29 @@ function postData() {
     });
 }
 
+function countDate() {
+    const inputDate = document.getElementById("data");
+    const ageInput = document.getElementById("age");
+    const circle = document.getElementById("age_circle");
+    inputDate.addEventListener('input', function() {
+        let birthday = new Date(inputDate.value);
+        let date = new Date();
+        let year = "лет"
+        let age = date.getFullYear() - birthday.getFullYear();
+        if ((date.getMonth() < birthday.getMonth()) ||
+            (date.getMonth() === birthday.getMonth() && date.getDate() < birthday.getDate())) {
+                age--;
+            };
+        if (age % 10 === 1 && age % 100 != 11) {
+            year = "год";
+        } else if ((age % 10 < 5) && (age % 100 < 10 || age % 100 >= 20)){
+            year = "года";
+        }
+        ageInput.textContent = age + " " + year;
+        circle.style.display = "block";
+    });
+};
+
 // Fetch and display items
 // function fetchUser() {
 //     fetch('/myapp/api/items/')
@@ -423,4 +446,5 @@ selectLevelEducation();
 selectFaculty();
 selectOp();
 sex();
-nameTop()
+nameTop();
+countDate();
