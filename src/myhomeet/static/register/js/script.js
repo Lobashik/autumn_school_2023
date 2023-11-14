@@ -60,7 +60,13 @@ function sex() {
     radioButtons.forEach(radio => {
         radio.addEventListener('change', function() {
             if (radio.checked) {
-                resultDiv.textContent = radio.value;
+                if (radio.value == "F") {
+                    correctValue = "Девушка"
+                }
+                else if (radio.value == "M") {
+                    correctValue = "Парень"
+                }
+                resultDiv.textContent = correctValue;
             }
         });
     });
@@ -139,6 +145,20 @@ function textToP() {
             displayText.style.background = "#EEEEF1";
           };
     });
+}
+
+function nameTop() {
+    const nameText = document.getElementById("name")
+    const displayName = document.getElementById("display_name")
+    nameText.addEventListener("input", function() {
+        const nameInput = nameText.value;
+        if (nameInput) {
+            displayName.textContent = nameInput;;
+        }
+        else {
+            displayName.textContent = "Ваше имя";
+        }
+    })
 }
 
 function buttonContinue() {
@@ -403,3 +423,4 @@ selectLevelEducation();
 selectFaculty();
 selectOp();
 sex();
+nameTop()

@@ -33,7 +33,5 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = USER
-        fields = ('name', 'sex', 'tg', 'number', 'photo_ava',
-                  'date_of_birth', 'description', 'who_are_you',
-                  'level', 'education', 'faculty', 'program',
-                  'work', 'year_start_work', 'password', 'last_login')
+        exclude = ('user_permissions', 'groups', 'is_superuser', 
+                   'is_staff', 'id')
