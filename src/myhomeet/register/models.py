@@ -1,6 +1,14 @@
+import jwt
+import os
+
+from datetime import datetime, timedelta
+from dotenv import load_dotenv
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
+
+
+load_dotenv()
 
 
 class UserManager(BaseUserManager):
@@ -85,6 +93,25 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'tg'
     REQUIRED_FIELDS = []
+
+    @property
+    def token(self):
+        return self._generate_jwt_token()
+    
+
+    def _generate_jwt_token(self):
+        """
+        Генерирует веб-токен JSON, в котором хранится идентификатор этого
+        пользователя, срок действия токена составляет 1 день от создания
+        """
+        dt = datetime.now() + timedelta(days=1)
+
+        token = jwt.encode({
+            'id': self.pk,
+            'exp': int(dt.strftime('%s'))
+        }, os.getenv('SECRET_KEY'), algorithm='HS256')
+
+        return token.decode('utf-8')
 
     class Meta:
         verbose_name = "Пользователь"
