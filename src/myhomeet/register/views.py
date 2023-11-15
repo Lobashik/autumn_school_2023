@@ -7,13 +7,16 @@ from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
 from rest_framework.response import Response
 from rest_framework import status
-from . import serializers
+from rest_framework.permissions import AllowAny
+from . import serializers, renderers
 
 
 USER = get_user_model()
 
 
 class UserAPIView(APIView):
+    permission_classes = (AllowAny,)
+    renderer_classes = (renderers.UserJSONRenderer,)
     serializer_class = serializers.UserSerializer
     def get(self, request):
         users = USER.objects.all()
@@ -60,3 +63,20 @@ def login_user(request):
             return HttpResponse("Нет такого пользователя")
     else:
         return render(request, 'register/login.html', {'login': 'Назад', 'logname': 'go_back'})
+    
+
+class LoginAPIView(APIView):
+    permission_classes = (AllowAny,)
+    renderer_classes = (renderers.UserJSONRenderer,)
+    serializer_class = serializers.LoginSerializer
+
+    def post(self, request):
+        user = request.data.get('user', {})
+
+        # Обратите внимание, что мы не вызываем метод save() сериализатора, как
+        # делали это для регистрации. Дело в том, что в данном случае нам
+        # нечего сохранять. Вместо этого, метод validate() делает все нужное.
+        serializer = self.serializer_class(data=user)
+        serializer.is_valid(raise_exception=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
