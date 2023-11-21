@@ -4,13 +4,13 @@ from .views import *
 
 
 app_name = 'register'
-router = DefaultRouter()
-router.register('user', UserViewSet, basename="user-viewset")
+# router = DefaultRouter()
+# router.register('user', UserViewSet, basename="user-viewset")
 
 urlpatterns = [
     path('', index, name='register'),
-    path('user/', UserAPIView.as_view(), name='user_view'),
+    path('user/', RegistrationAPIView.as_view(), name='user_view'),
     path('logout/', logout_user, name='logout'),
-    path('login/', login_user, name='login')
+    # path('login/', login_user, name='login')
 ]
-urlpatterns += [path(r'api/', include(router.urls))]
+# urlpatterns += [path(r'api/', include(router.urls))]
