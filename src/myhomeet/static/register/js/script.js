@@ -361,7 +361,7 @@ function postData() {
     const formData = new FormData(document.getElementById("registration_form"));
     formData.set('photo_ava', img);
     formData.set('password', formData.get('tg'))
-    fetch('/register/user/', {
+    fetch('/register/api/user/register_and_login/', {
         method: 'POST',
         body: formData
     })
@@ -378,6 +378,23 @@ function postData() {
                 errorField.textContent = data.errors[field];
             }
         }
+    });
+}
+
+function fetchUserData() {
+    const accessToken = localStorage.getItem('access_token');
+    // const refreshToken = localStorage.getItem('refresh_token');
+    fetch('userlist/', {
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('User data:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
 }
 

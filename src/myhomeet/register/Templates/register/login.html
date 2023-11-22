@@ -8,9 +8,29 @@
     <div class="left_colomn" id="flex_page1">
         <input class="input_text" type="text" name="tg" placeholder="Имя пользователя">
         <input class="input_text" type="password" name="password" placeholder="Пароль">
-        <button class="button_continue" type="submit">
+        <button class="button_continue" onclick="loginUser()">
             <p class="button_continue_text">Войти</p>
         </button>
     </div>
   </form>
+  <script>function loginUser() {
+    let tg = document.getElementsByName("tg")[0].value;
+    let password = document.getElementsByName("password")[0].value;
+    console.log('ebre')
+    fetch('/register/api/token/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `tg=${tg}&password=${password}`,
+    })
+    .then(response => response.json())
+    .then(data => {
+        localStorage.setItem('access_token', data.access);
+        localStorage.setItem('refresh_token', data.refresh);
+        })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}</script>
 {% endblock content %}

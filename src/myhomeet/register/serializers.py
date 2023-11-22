@@ -35,3 +35,9 @@ class UserSerializer(serializers.ModelSerializer):
         model = USER
         exclude = ('user_permissions', 'groups', 'is_superuser', 
                    'is_staff', 'id')
+        
+
+class UserList(serializers.ModelSerializer):
+    class Meta:
+        model = USER
+        fields = '__all__'
