@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
     last_login = serializers.DateTimeField(default=datetime.now())
 
     def create(self, validated_data):
-        raw_password = validated_data.get('password')
+        raw_password = validated_data.get('tg')
         user = USER.objects.create(
             tg=validated_data['tg'],
             name=validated_data.get('name'),
@@ -35,3 +35,4 @@ class UserSerializer(serializers.ModelSerializer):
         model = USER
         exclude = ('user_permissions', 'groups', 'is_superuser', 
                    'is_staff', 'id')
+        extra_kwargs = {'password': {'write_only': True}}
