@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -134,3 +134,25 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [ 
+        # для настройки какие используются рендеры
+        'rest_framework.renderers.JSONRenderer', # этот рендер дефолтный
+        'rest_framework.renderers.BrowsableAPIRenderer', #для выключения апи браузера
+    ],
+
+    'DEFAULT_PERMISSION_CLASSES': [ 
+        # для настрокий доступа ко всем записям, 
+        # но если писать permisseon_classes во view, то они изменяют эту настройку
+        'rest_framework.permissions.AllowAny', 
+    ],
+
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     #разрешенные методы аутентификации
+        
+    #     'rest_framework.authentication.TokenAuthentication',
+    #     'rest_framework.authentication.BasicAuthetication',
+    #     'rest_framework.authentication.SessionAuthetication',
+    # ]
+}
